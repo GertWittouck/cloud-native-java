@@ -5,4 +5,5 @@ code examples from book code native java
 - Chapter 2: spring-boot initializer
 - Chapter 2: build spring-boot application with spring.io guide
 - Chapter 2: customer-service
-- Chapter 3; config-server + git configuration repos
+- Chapter 3: config-server + git configuration repos
+- Chapter 4: mocking in tests
