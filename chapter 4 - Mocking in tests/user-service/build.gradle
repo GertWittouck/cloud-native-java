@@ -8,22 +8,40 @@ group = 'com.gwi'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
 repositories {
 	mavenCentral()
+	maven { url 'https://repo.spring.io/milestone' }
+}
+
+ext {
+	set('springCloudVersion', "Hoxton.SR5")
 }
 
 dependencies {
-	compileOnly 'org.projectlombok:lombok:1.18.12'
-	annotationProcessor 'org.projectlombok:lombok:1.18.12'
-
-	testCompileOnly 'org.projectlombok:lombok:1.18.12'
-	testAnnotationProcessor 'org.projectlombok:lombok:1.18.12'
-
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.cloud:spring-cloud-starter-config'
+	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'com.h2database:h2'
+	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+}
+
+ext {
+	set('springCloudVersion', "Hoxton.M3")
+}
+
+dependencyManagement {
+	imports {
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
 	}
 }
 
