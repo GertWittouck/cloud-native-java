@@ -1,18 +1,23 @@
 package com.gwi.accountservice.model;
 
+import lombok.Data;
 import lombok.Getter;
+import lombok.experimental.Accessors;
 import org.springframework.util.StringUtils;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
-@Getter
 @Embeddable
+@Data
+@Accessors(chain = true)
 public class AccountNumber {
 
     @Column(name = "ACCOUNTNUMBER", unique = true)
-    private final String accountNumber;
+    private String accountNumber;
 
+    public AccountNumber() {
+    }
 
     public AccountNumber(String accountNumber) {
         this.accountNumber = validate(accountNumber);

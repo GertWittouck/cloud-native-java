@@ -1,14 +1,16 @@
 package com.gwi.accountservice.model;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
+import lombok.experimental.Accessors;
 
-@RequiredArgsConstructor
-@Getter
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+@Accessors(chain = true)
 public class User {
 
-    private final Long id;
-    private final String username;
-    private final String firstName;
-    private final String lastName;
+    private Long id;
+    private String username;
+    private String firstName;
+    private String lastName;
 }

@@ -1,4 +1,4 @@
-package com.gwi.accountservice;
+package com.gwi.accountservice.services;
 
 import com.gwi.accountservice.model.User;
 import org.springframework.beans.factory.annotation.Value;
@@ -24,7 +24,7 @@ public class UserService {
     }
 
     public User getAuthenticatedUser() {
-        URI url = URI.create(String.format("http://%s/uaa/v1/me", serviceHost));
+        URI url = URI.create(String.format("http://%s/uua/v1/me", serviceHost));
         RequestEntity<Void> request = get(url).header(HttpHeaders.CONTENT_TYPE, APPLICATION_JSON_VALUE).build();
         return restTemplate.exchange(request, User.class).getBody();
     }

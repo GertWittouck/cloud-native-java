@@ -1,16 +1,14 @@
 package com.gwi.accountservice.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "ACCOUNT")
-@NoArgsConstructor
-@AllArgsConstructor
 @Getter
+@Setter
 public class Account {
 
     @Id
@@ -23,4 +21,18 @@ public class Account {
 
     @Embedded
     private AccountNumber accountNumber;
+
+    public Account() {
+    }
+
+    public Account(Long id, String username, AccountNumber accountNumber) {
+        this.id = id;
+        this.username = username;
+        this.accountNumber = accountNumber;
+    }
+
+    public Account(String username, AccountNumber accountNumber) {
+        this.username = username;
+        this.accountNumber = accountNumber;
+    }
 }
